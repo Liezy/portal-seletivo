@@ -13,7 +13,7 @@ Cada item deve ser implementado individualmente, verificado e aprovado pelo usu�
 - [x] Criar este planejamento com sete etapas e tarefas verificáveis.
 - [x] Criar `AGENTS.md` com as instruções de trabalho.
 - [x] Preparar o Git local na branch `main`, ignorar dados locais e remover a chave fixa do Django antes do versionamento.
-- [ ] Conectar ao repositório informado pelo usuário no GitHub e verificar o envio inicial.
+- [x] Conectar ao repositório informado pelo usuário no GitHub e verificar o envio inicial.
 
 Verificação: conferir a existência dos dois arquivos, as sete etapas e as regras solicitadas. Nenhuma implementação da aplicação foi realizada nesta preparação. A pasta já continha `config/`, `venv/`, `manage.py` e `db.sqlite3`; esses itens não foram alterados ou validados nesta tarefa.
 
@@ -96,4 +96,5 @@ Verificação: conferir a existência dos dois arquivos, as sete etapas e as reg
 | Tarefa | Situação | Verificação | Próximo passo |
 | --- | --- | --- | --- |
 | Preparação do planejamento e das instruções | Concluída | Arquivos conferidos, sete etapas e regras presentes | Aguardar aprovação do usuário para iniciar a primeira tarefa da etapa 1 |
-| Setup Git local | Concluída | Branch `main` criada; exclusões conferidas com `git check-ignore`; `manage.py check` sem erros; chave fixa removida | Aguardar URL do GitHub para configurar o remoto e enviar o primeiro commit |
+| Setup Git local | Concluída | Branch `main` criada; exclusões conferidas com `git check-ignore`; `manage.py check` sem erros; chave fixa removida | Conexão com GitHub concluída |
+| Conexão com GitHub | Concluída | Remoto `origin`: `git@github.com:Liezy/portal-seletivo.git`; autenticação SSH e envio inicial bem-sucedidos; `main` acompanha `origin/main` | Aguardar aprovação do usuário para iniciar a primeira tarefa da etapa 1 |
