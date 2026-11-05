@@ -1,0 +1,28 @@
+# Python e ambientes virtuais
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# Dados locais e documentos enviados
+*.sqlite3
+*.sqlite3-journal
+media/
+staticfiles/
+
+# Segredos e configurações locais
+.env
+.env.*
+!.env.example
+*.log
+
+# Ferramentas de desenvolvimento
+.pytest_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+node_modules/
+.DS_Store
+Thumbs.db
