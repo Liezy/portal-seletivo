@@ -1,0 +1,31 @@
+@import "tailwindcss" source(none);
+@source "../../templates";
+
+@plugin "daisyui" {
+  themes: light --default;
+  logs: false;
+}
+
+/* Tema inicial do portal; não representa um manual de marca oficial. */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  color-scheme: light;
+  --color-primary: #14532d;
+  --color-primary-content: #ffffff;
+  --color-secondary: #1e3a5f;
+  --color-secondary-content: #ffffff;
+  --color-accent: #854d0e;
+  --color-accent-content: #ffffff;
+  --color-base-100: #ffffff;
+  --color-base-200: #f1f5f2;
+  --color-base-300: #d9e2dc;
+  --color-base-content: #17251d;
+}
+
+@layer base {
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+}

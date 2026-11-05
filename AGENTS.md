@@ -11,7 +11,9 @@
 
 Portal de processos seletivos para cursos de especialização da UFT, começando pela Especialização em Gestão de Incêndios Florestais.
 
-Stack prevista: Django, Django Templates, Tailwind CSS e SQLite inicialmente, com possibilidade de migração para PostgreSQL.
+Stack prevista: Django, Django Templates, Tailwind CSS com daisyUI e SQLite inicialmente, com possibilidade de migração para PostgreSQL.
+
+Usar componentes do daisyUI na interface e classes utilitárias do Tailwind CSS para ajustes de layout e estilo, priorizando consistência visual e evitando CSS personalizado desnecessário.
 
 ## Forma de trabalho
 

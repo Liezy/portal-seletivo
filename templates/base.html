@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portal de processos seletivos para cursos de especialização da UFT.">
+  <title>{% block title %}Portal de Processos Seletivos | UFT{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body class="flex min-h-screen flex-col bg-base-200 text-base-content">
+  <a href="#conteudo" class="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50">Pular para o conteúdo</a>
+  <header class="border-b border-base-300 bg-base-100">
+    <div class="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8">
+      <a href="{% url 'core:home' %}" class="flex items-center gap-3 rounded-lg" aria-label="UFT — início do portal">
+        <span class="rounded-lg bg-primary px-3 py-2 text-xl font-bold text-primary-content">UFT</span>
+        <span class="text-sm font-semibold sm:text-base">Portal de Processos Seletivos</span>
+      </a>
+      <span class="text-sm text-base-content">Cursos de especialização</span>
+    </div>
+  </header>
+  <main id="conteudo" tabindex="-1" class="mx-auto w-full max-w-6xl flex-1 px-5 py-10 sm:px-8 sm:py-16">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="border-t border-base-300 bg-base-100">
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-sm sm:flex-row sm:justify-between sm:px-8">
+      <p>Universidade Federal do Tocantins</p>
+      <p>Portal de Processos Seletivos</p>
+    </div>
+  </footer>
+</body>
+</html>

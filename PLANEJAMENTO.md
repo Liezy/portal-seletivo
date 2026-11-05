@@ -1,10 +1,10 @@
-# Planejamento — Portal de Processos Seletivos da UFT
+# Planejamento — Portal de Processos Seletivos
 
 ## Objetivo e escopo
 
-Desenvolver incrementalmente um portal de processos seletivos para cursos de especialização da UFT. O primeiro curso será a **Especialização em Gestão de Incêndios Florestais**.
+Desenvolver incrementalmente um portal de processos seletivos um curso. O primeiro curso será a **Especialização em Gestão de Incêndios Florestais**.
 
-Stack: **Django, Django Templates, Tailwind CSS e SQLite** inicialmente. Manter o uso do ORM e das migrações do Django para permitir futura migração para **PostgreSQL**.
+Stack: **Django, Django Templates, Tailwind CSS com daisyUI e SQLite** inicialmente. Manter o uso do ORM e das migrações do Django para permitir futura migração para **PostgreSQL**.
 
 Cada item deve ser implementado individualmente, verificado e aprovado pelo usuário antes do avanço. As regras acadêmicas e administrativas dependerão do edital e de confirmação do usuário.
 
@@ -19,13 +19,46 @@ Verificação: conferir a existência dos dois arquivos, as sete etapas e as reg
 
 ## 1. Estrutura inicial
 
-- [ ] Inspecionar a estrutura Django existente e registrar o que pode ser aproveitado. Verificar: inventário de configuração, aplicações e dependências.
-- [ ] Confirmar e registrar as versões de Python e Django e as dependências mínimas. Verificar: instalação reproduzível em ambiente virtual.
-- [ ] Organizar as aplicações e configurações mínimas do projeto. Verificar: `python manage.py check` sem erros.
-- [ ] Configurar SQLite e executar as migrações iniciais. Verificar: migrações aplicadas sem erros.
-- [ ] Configurar Django Templates, arquivos estáticos e Tailwind CSS. Verificar: página de desenvolvimento com um estilo Tailwind carregado.
-- [ ] Criar o template base com idioma português e estrutura responsiva. Verificar: renderização em telas pequenas e grandes.
-- [ ] Documentar a instalação e a execução local. Verificar: seguir os passos em um ambiente limpo.
+- [x] Inspecionar a estrutura Django existente e registrar o que pode ser aproveitado. Verificar: inventário de configuração, aplicações e dependências.
+- [x] Identificar e registrar as versões instaladas de Python, Django e dependências. Verificar: versões obtidas do ambiente virtual e registradas no inventário.
+- [x] Definir as dependências mínimas em arquivo e verificar uma instalação reproduzível em ambiente virtual limpo.
+- [x] Organizar as aplicações e configurações mínimas do projeto. Verificar: `python manage.py check` sem erros.
+- [x] Configurar SQLite e executar as migrações iniciais. Verificar: configuração existente confirmada e 18 migrações nativas já aplicadas, conforme inspeção.
+- [x] Configurar Django Templates, arquivos estáticos e Tailwind CSS. Verificar: página de desenvolvimento com um estilo Tailwind carregado.
+- [x] Integrar daisyUI ao Tailwind CSS. Verificar: componente daisyUI renderizado com os estilos compilados e servidos pelo Django.
+- [x] Definir o tema visual do portal com daisyUI. Verificar: tema claro com cores semânticas consistentes, botão daisyUI e foco visível; campos serão conferidos quando seus formulários forem criados.
+- [x] Criar o template base com idioma português e estrutura responsiva. Verificar: renderização em telas pequenas e grandes.
+- [x] Documentar a instalação e a execução local. Verificar: seguir os passos em um ambiente limpo.
+
+### Conclusão da etapa 1
+
+Autorização do usuário: concluir todas as tarefas restantes desta etapa, sem pausas entre elas.
+
+- Dependências Python fixadas em `requirements.txt` e instaladas no ambiente separado `.venv-verificacao/`; `pip check` sem incompatibilidades.
+- Tailwind CSS e CLI 4.3.4 e daisyUI 5.7.50 fixados, com `package-lock.json`; `npm ci` e `npm run build:css` executados com sucesso. A consulta npm informou zero vulnerabilidades.
+- Aplicação `core` criada para a rota inicial, usando `TemplateView` nativa; sem modelos ou regras de seleção.
+- Django Templates, arquivos estáticos, idioma `pt-br` e fuso `America/Sao_Paulo` configurados. Tema claro inicial com verde, azul e foco visível; sem alegação de identidade visual oficial.
+- Template base com cabeçalho, rodapé, link para pular ao conteúdo e blocos reutilizáveis. Página mínima informa que o portal está em preparação.
+- `README.md` documenta instalação, compilação, execução, configuração de chave, estrutura e verificações. Não há carregamento automático de `.env`.
+- Verificações: `manage.py check`, `makemigrations --check --dry-run`, `migrate --check`, coleta de estáticos simulada, migrações em SQLite temporário vazio e `git diff --check` sem erros. Página e CSS retornaram HTTP 200; redirecionamento do Admin, idioma, fuso e localização do CSS conferidos.
+- Renderização inspecionada no Edge headless em 500 × 900 e 1440 × 1000. A janela de 390 px ficou limitada pela largura mínima do navegador; não foi considerada uma validação de viewport móvel de 390 px. Navegação real por teclado e formulários ficam para a revisão de acessibilidade; foco e link de salto estão implementados.
+
+Etapa 1 concluída. Etapa 2 depende de nova aprovação. Alterações reunidas em commit local por solicitação do usuário; envio ao GitHub pendente.
+
+### Inventário da estrutura existente — 05/11/2026
+
+- **Base reutilizável:** `manage.py` e pacote `config/` com configurações, rotas e pontos de entrada ASGI e WSGI. Não é necessário recriar o projeto.
+- **Ambiente observado:** `venv/` com Python 3.14.7, Django 6.1.3, asgiref 3.13.0, sqlparse 0.6.1, tzdata 2026.6 e pip 26.2.1. Versões obtidas diretamente do ambiente local; a definição das dependências e a instalação reproduzível ficam para a próxima tarefa.
+- **Aplicações:** somente as nativas `admin`, `auth`, `contenttypes`, `sessions`, `messages` e `staticfiles`. Nenhuma aplicação de domínio criada.
+- **Banco:** SQLite configurado em `db.sqlite3`; todas as 18 migrações nativas listadas estão aplicadas. O banco pode ser aproveitado no desenvolvimento e permanece fora do Git. Nenhum dado de usuário foi consultado.
+- **Rotas:** somente `admin/`; ainda não há página pública.
+- **Templates e estilos:** backend Django Templates com `APP_DIRS=True` e `DIRS=[]`; `STATIC_URL='static/'`. Ainda não há templates próprios, configuração de compilação Tailwind ou daisyUI.
+- **Configurações observadas:** `DEBUG=True`, `ALLOWED_HOSTS=[]`, idioma `en-us`, fuso `UTC` e backend de e-mail em console. Localização para português e fuso do projeto ficam para a tarefa de configurações mínimas.
+- **Chave do Django:** leitura de `DJANGO_SECRET_KEY` do ambiente com geração temporária como alternativa; sem chave fixa versionada. A alternativa temporária não preserva sessões entre reinícios.
+- **Versionamento:** branch `main` acompanha `origin/main`; `.gitignore` já protege ambiente virtual, SQLite, arquivos `.env` e documentos enviados. Alterações locais anteriores em `AGENTS.md` e neste planejamento foram preservadas.
+- **Pendências de estrutura:** arquivo de dependências, documentação de instalação, aplicações do portal, templates, estilos e configuração de produção ainda não preparados.
+
+Verificações executadas: inventário dos arquivos e configurações, `python --version`, `python -m pip list`, `python manage.py check` (sem problemas) e `python manage.py showmigrations` (18 migrações aplicadas), usando `venv/Scripts/python.exe`. Nenhuma dependência instalada e nenhuma configuração da aplicação alterada nesta tarefa.
 
 ## 2. Portal público
 
@@ -93,8 +126,13 @@ Verificação: conferir a existência dos dois arquivos, as sete etapas e as reg
 
 ## Registro de conclusões
 
+Uso de daisyUI registrado no planejamento e em `AGENTS.md`; integração local concluída na etapa 1.
+
 | Tarefa | Situação | Verificação | Próximo passo |
 | --- | --- | --- | --- |
 | Preparação do planejamento e das instruções | Concluída | Arquivos conferidos, sete etapas e regras presentes | Aguardar aprovação do usuário para iniciar a primeira tarefa da etapa 1 |
 | Setup Git local | Concluída | Branch `main` criada; exclusões conferidas com `git check-ignore`; `manage.py check` sem erros; chave fixa removida | Conexão com GitHub concluída |
 | Conexão com GitHub | Concluída | Remoto `origin`: `git@github.com:Liezy/portal-seletivo.git`; autenticação SSH e envio inicial bem-sucedidos; `main` acompanha `origin/main` | Aguardar aprovação do usuário para iniciar a primeira tarefa da etapa 1 |
+| Etapa 1 — Inspeção da estrutura existente | Concluída | Inventário registrado; `manage.py check` sem problemas; 18 migrações nativas aplicadas | Aguardar aprovação para definir e registrar versões e dependências mínimas com instalação reproduzível |
+| Revisão dos checks da etapa 1 | Concluída | Inspeção, versões instaladas e SQLite com migrações marcados; instalação reproduzível separada como pendência | Aguardar aprovação para preparar o arquivo de dependências e validar a instalação limpa |
+| Etapa 1 — Estrutura inicial completa | Concluída | Instalações Python e npm reproduzidas; CSS compilado; verificações Django, banco vazio, HTTP e inspeção visual realizadas; README criado | Aguardar aprovação para iniciar a etapa 2 |

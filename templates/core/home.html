@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="grid items-start gap-8 lg:grid-cols-2" aria-labelledby="titulo">
+  <div class="space-y-5">
+    <span class="badge badge-outline border-primary text-primary">Especialização</span>
+    <h1 id="titulo" class="text-3xl leading-tight font-bold sm:text-5xl">Gestão de Incêndios Florestais</h1>
+    <p class="max-w-xl text-lg leading-relaxed">Portal de processos seletivos da UFT para cursos de especialização.</p>
+    <a href="#situacao" class="btn btn-primary min-h-12">Consultar situação do portal</a>
+  </div>
+  <article id="situacao" class="card border border-base-300 bg-base-100 shadow-sm" aria-labelledby="situacao-titulo">
+    <div class="card-body gap-4 p-6 sm:p-8">
+      <p class="text-sm font-semibold text-primary">Situação do portal</p>
+      <h2 id="situacao-titulo" class="card-title text-2xl">Portal em preparação</h2>
+      <p class="leading-relaxed">As informações sobre editais, cronogramas e inscrições serão disponibilizadas após a publicação dos processos seletivos.</p>
+    </div>
+  </article>
+</section>
+{% endblock %}

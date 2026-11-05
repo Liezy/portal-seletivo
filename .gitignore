@@ -24,5 +24,7 @@ htmlcov/
 .idea/
 .vscode/
 node_modules/
+static/css/app.css
+.venv-verificacao/
 .DS_Store
 Thumbs.db

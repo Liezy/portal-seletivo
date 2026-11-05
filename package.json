@@ -1,0 +1,14 @@
+{
+  "name": "portal-seletivo",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/app.css -o ./static/css/app.css --minify",
+    "watch:css": "tailwindcss -i ./assets/css/app.css -o ./static/css/app.css --watch"
+  },
+  "engines": { "node": ">=22" },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.4",
+    "tailwindcss": "4.3.4",
+    "daisyui": "5.7.50"
+  }
+}
